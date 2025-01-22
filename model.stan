@@ -7,6 +7,8 @@ data {
   array[N] int<lower=1, upper=K> team1; // team 1 for game n
   array[N] int<lower=1, upper=K> team2; // team 2 for game n
   array[N] int<lower=0, upper=1> y; // winner for game n
+  int<lower=1, upper=K> pred_team1;
+  int<lower=1, upper=K> pred_team2;
 }
 
 parameters {
@@ -21,4 +23,5 @@ model {
 
 generated quantities {
   array[K] int<lower=1, upper=K> ranked = sort_indices_desc(alpha);
+  int pred_outcome = bernoulli_logit_rng(alpha[pred_team2] - alpha[pred_team1]);
 }

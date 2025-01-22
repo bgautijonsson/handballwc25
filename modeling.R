@@ -11,7 +11,7 @@ d <- read_sheet("https://docs.google.com/spreadsheets/d/1ctStWrpf3JSe--qObOrej1q
 
 
 
-teams <- unique(c(d$Team1, d$Team2))
+teams <- unique(c(d$team1, d$team2))
 
 teams <- tibble(
   team = teams
@@ -64,12 +64,22 @@ team1 <- model_d$team_nr1
 team2 <- model_d$team_nr2
 y <- model_d$winner
 
+pred_team2 <- teams |> 
+  filter(team == "Iceland") |> 
+  pull(team_nr)
+
+pred_team1 <- teams |> 
+  filter(team == "Egypt") |> 
+  pull(team_nr)
+
 stan_data <- list(
   K = K,
   N = N,
   team1 = team1,
   team2 = team2,
-  y = y
+  y = y,
+  pred_team2 = pred_team2,
+  pred_team1 = pred_team1
 )
 
 model <- cmdstan_model("model.stan")
@@ -79,6 +89,8 @@ results <- model$sample(
   chains = 4,
   parallel_chains = 4
 )
+
+results$summary("pred_outcome")
 
 alpha <- results$summary("alpha")
 
@@ -121,3 +133,4 @@ results$draws("ranked") |>
   ) |> 
   ggplot(aes(p, team)) +
   geom_point()
+
