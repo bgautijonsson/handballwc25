@@ -9,6 +9,8 @@ theme_set(theme_metill())
 d <- read_sheet("https://docs.google.com/spreadsheets/d/1ctStWrpf3JSe--qObOrej1qPlHLPYeTbw9FoixESMZ0/edit?gid=0#gid=0") |> 
   janitor::clean_names()
 
+d |> 
+  write_csv("data.csv")
 
 
 teams <- unique(c(d$team1, d$team2))
@@ -106,9 +108,25 @@ alpha |>
     team = fct_reorder(team, median)
   ) |> 
   ggplot(aes(median, team)) +
-  geom_point() +
+  geom_point(
+    size = 3
+  ) +
   geom_segment(
-    aes(x = q5, xend = q95, y = team)
+    aes(x = q5, xend = q95, y = team),
+    linewidth = 0.4
+  ) +
+  scale_x_continuous(
+    limits = c(-3, 3),
+    guide = ggh4x::guide_axis_truncated(),
+    expand = expansion(mult = c(0.01, 0.05))
+  ) +
+  scale_y_discrete(
+    guide = ggh4x::guide_axis_truncated()
+  ) +
+  labs(
+    x = NULL,
+    y = NULL,
+    title = "Mat á 'getu' landsliða eftir frammistöðu á HM hingað til"
   )
 
 results$draws("ranked") |> 
@@ -132,5 +150,26 @@ results$draws("ranked") |>
     team = fct_reorder(team, p)
   ) |> 
   ggplot(aes(p, team)) +
-  geom_point()
+  geom_segment(
+    aes(xend = 0, yend = team),
+    linewidth = 0.1
+    ) +
+  geom_point(
+    size = 2
+  ) +
+  scale_x_continuous(
+    limits = c(0, 0.2),
+    labels = label_percent(),
+    guide = ggh4x::guide_axis_truncated(),
+    expand = expansion(mult = c(0.01, 0.05))
+  ) +
+  scale_y_discrete(
+    guide = ggh4x::guide_axis_truncated()
+  ) +
+  labs(
+    x = NULL,
+    y = NULL,
+    title = "Líkur á að vera 'besta' liðið á HM",
+    subtitle = "Ekki líkur á að vinna HM, því það fer líka eftir því hvaða liðum þú mætir osf"
+  )
 
