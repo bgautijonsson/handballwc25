@@ -1,65 +1,65 @@
-team1,team2,winner,goals1,goals2
-Czech Republic,Switzerland,0,17,17
-Germany,Poland,1,35,28
-Czech Republic,Poland,0,19,19
-Switzerland,Germany,2,29,31
-Poland,Switzerland,2,28,30
-Germany,Czech Republic,1,29,22
-Italy,Tunisia,1,35,25
-Denmark,Algeria,1,47,22
-Italy,Algeria,1,32,23
-Tunisia,Denmark,2,21,32
-Algeria,Tunisia,2,25,26
-Denmark,Italy,1,39,20
-France,Qatar,1,37,19
-Austria,Kuwait,1,37,26
-Kuwait,France,2,19,43
-Austria,Qatar,1,28,26
-France,Austria,1,35,27
-Qatar,Kuwait,1,25,22
-Netherlands,Guinea,1,40,23
-Hungary,North Macedonia,0,27,27
-Netherlands,North Macedonia,1,37,32
-Guinea,Hungary,2,18,35
-North Macedonia,Guinea,1,29,20
-Hungary,Netherlands,1,36,32
-Portugal,United States,1,30,21
-Norway,Brazil,2,26,29
-Portugal,Brazil,1,30,26
-United States,Norway,2,17,33
-Brazil,United States,1,31,24
-Norway,Portugal,2,28,31
-Spain,Chile,1,31,22
-Sweden,Japan,1,39,21
-Spain,Japan,1,39,20
-Chile,Sweden,2,30,42
-Japan,Chile,2,26,31
-Sweden,Spain,0,29,29
-Slovenia,Cuba,1,41,19
-Iceland,Cape Verde,1,34,21
-Cape Verde,Slovenia,2,24,36
-Iceland,Cuba,1,40,19
-Cuba,Cape Verde,2,28,38
-Slovenia,Iceland,2,18,23
-Egypt,Argentina,1,39,25
-Croatia,Bahrain,1,36,22
-Bahrain,Egypt,2,24,35
-Croatia,Argentina,1,33,18
-Argentina,Bahrain,1,26,25
-Egypt,Croatia,1,28,24
-Kuwait,Guinea,1,26,24
-Poland,Algeria,1,38,32
-Cuba,Bahrain,2,26,39
-Switzerland,Tunisia,1,37,26
-Czech Republic,Italy,2,18,25
-Denmark,Germany,1,40,30
-Austria,North Macedonia,0,29,29
-Qatar,Netherlands,2,37,38
-Hungary,France,2,30,37
-Brazil,Chile,1,28,24
-Slovenia,Argentina,1,34,23
-Cape Verde,Croatia,2,24,44
-Sweden,Portugal,0,37,37
-United States,Japan,1,27,25
-Egypt,Iceland,2,24,27
-Norway,Spain,1,25,24
+team1,team2,shots1,shots2,goals1,goals2,winner
+Italy,Tunisia,47,51,32,25,1
+France,Qatar,57,51,37,19,1
+Denmark,Algeria,63,52,47,22,1
+Austria,Kuwait,50,51,37,26,1
+Czechia,Switzerland,37,38,17,17,0
+Netherlands,Guinea,55,54,40,23,1
+Portugal,United States of America,50,44,30,21,1
+Egypt,Argentina,51,40,39,25,1
+Hungary,North Macedonia,45,44,27,27,0
+Norway,Brazil,45,44,26,29,2
+Croatia,Bahrain,45,41,36,22,1
+Germany,Poland,52,45,35,28,1
+Kuwait,France,53,60,19,43,2
+Spain,Chile,50,45,31,22,1
+Slovenia,Cuba,51,41,41,19,1
+Italy,Algeria,49,48,32,23,1
+Iceland,Cape Verde,48,36,34,21,1
+Tunisia,Denmark,49,51,21,32,2
+Austria,Qatar,42,36,28,26,1
+Sweden,Japan,51,50,39,21,1
+Bahrain,Egypt,49,48,24,35,2
+Czechia,Poland,34,33,19,19,0
+Netherlands,North Macedonia,48,38,37,32,1
+Portugal,Brazil,49,47,30,26,1
+Switzerland,Germany,51,51,29,31,2
+Guinea,Hungary,49,60,18,35,2
+United States of America,Norway,45,50,17,33,2
+Croatia,Argentina,50,44,33,18,1
+France,Austria,46,36,35,27,1
+Spain,Japan,56,46,39,20,1
+Cape Verde,Slovenia,50,49,24,36,2
+Algeria,Tunisia,44,43,25,26,2
+Iceland,Cuba,50,51,40,19,1
+Denmark,Italy,52,38,39,20,1
+Qatar,Kuwait,39,42,25,22,1
+Chile,Sweden,46,55,30,42,2
+Poland,Switzerland,45,48,28,30,2
+Brazil,United States of America,50,51,31,24,1
+Germany,Czechia,42,51,29,22,1
+Argentina,Bahrain,44,37,26,25,1
+North Macedonia,Guinea,51,48,29,20,1
+Hungary,Netherlands,49,42,36,32,1
+Norway,Portugal,49,43,28,31,2
+Egypt,Croatia,45,48,28,24,1
+Japan,Chile,49,46,26,31,2
+Cuba,Cape Verde,51,54,28,38,2
+Sweden,Spain,44,44,29,29,0
+Slovenia,Iceland,36,43,18,23,2
+Switzerland,Tunisia,51,48,37,26,1
+Austria,North Macedonia,44,43,29,29,0
+Czechia,Italy,43,40,18,25,2
+Qatar,Netherlands,51,47,37,38,2
+Denmark,Germany,54,46,40,30,1
+Hungary,France,53,59,30,37,2
+Brazil,Chile,45,42,28,24,1
+Slovenia,Argentina,47,44,34,23,1
+Sweden,Portugal,47,50,37,37,0
+Cape Verde,Croatia,53,53,24,44,2
+Egypt,Iceland,41,45,24,27,2
+Norway,Spain,40,41,25,24,1
+Kuwait,Guinea,50,44,26,24,1
+Poland,Algeria,49,52,38,32,1
+Cuba,Bahrain,53,60,26,39,2
+United States of America,Japan,47,43,27,25,1
