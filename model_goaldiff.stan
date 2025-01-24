@@ -10,12 +10,14 @@ data {
   array[N] int<lower=0> goals_team2; // team 2 for game n
   array[N] int<lower=0> shots_team1; // team 1 for game n
   array[N] int<lower=0> shots_team2; // team 2 for game n
-  array[N] int<lower=0, upper=1> winner; // winner for game n
+  vector[N] goal_diff;
   int<lower=1, upper=K> pred_team1;
   int<lower=1, upper=K> pred_team2;
 
   array[K] int<lower=0> gk_saves;
   array[K] int<lower=0> gk_shots;
+
+  real<lower = 0> df;
 }
 
 transformed data {
@@ -36,6 +38,8 @@ parameters {
   real mean_gk_saves;
 
   real beta_n_shots;
+
+  real<lower = 0> sigma_goal_diff;
 
 }
 
@@ -69,15 +73,16 @@ model {
 
   beta_n_shots ~ std_normal();
   gk_saves ~ binomial_logit(gk_shots, mean_gk_saves + defense);
-
+  sigma_goal_diff ~ exponential(1);
   goals_team1 ~ binomial_logit(shots_team1, mean_efficiency + offense[team1] - defense[team2]);
   goals_team2 ~ binomial_logit(shots_team2, mean_efficiency + offense[team2] - defense[team1]);
-  winner ~ bernoulli_logit(alpha[team2] - alpha[team1]);
+  goal_diff ~ student_t(df, alpha[team2] - alpha[team1], sigma_goal_diff);
 }
 
 generated quantities {
   array[K] int<lower=1, upper=K> ranked = sort_indices_desc(alpha);
-  real prob_win = inv_logit(alpha[pred_team2] - alpha[pred_team1]);
-  int pred_outcome = bernoulli_logit_rng(alpha[pred_team2] - alpha[pred_team1]);
+  real goal_diff_pred = exp(student_t_rng(df, alpha[pred_team2] - alpha[pred_team1], sigma_goal_diff)) - 1;
+  int pred_win = goal_diff_pred > 0 ? 1 : 0;
   corr_matrix[2] Omega = multiply_lower_tri_self_transpose(L_Omega);
+  array[N] real goal_diff_rep = student_t_rng(df, alpha[team2] - alpha[team1], sigma_goal_diff);
 }

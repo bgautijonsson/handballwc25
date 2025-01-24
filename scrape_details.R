@@ -17,7 +17,7 @@ data_preliminary <- tribble(
 )
 
 for (i in seq_along(links)) {
-  Sys.sleep(0.5)
+  Sys.sleep(0.1)
   game_url <- paste0("https://www.ihf.info", links[i])
 
   match_node <- str_match(game_url, "match-center/(.*)$")[, 2]
@@ -84,7 +84,7 @@ data_main <- tribble(
 )
 
 for (i in seq_along(links)) {
-  Sys.sleep(0.5)
+  Sys.sleep(0.1)
   game_url <- paste0("https://www.ihf.info", links[i])
 
   match_node <- str_match(game_url, "match-center/(.*)$")[, 2]
@@ -151,13 +151,13 @@ data_president <- tribble(
 )
 
 for (i in seq_along(links)) {
-  Sys.sleep(0.5)
+  Sys.sleep(0.1)
   game_url <- paste0("https://www.ihf.info", links[i])
-  
+
   match_node <- str_match(game_url, "match-center/(.*)$")[, 2]
-  
+
   d <- read_html(game_url)
-  
+
   team1 <- d |>
     html_element(
       xpath = glue(
@@ -165,12 +165,12 @@ for (i in seq_along(links)) {
       )
     ) |>
     html_text()
-  
+
   shots1 <- d |>
     html_element(xpath = '//*[@id="all-shots-a"]') |>
     html_text()
-  
-  
+
+
   team2 <- d |>
     html_element(
       xpath = glue(
@@ -178,17 +178,17 @@ for (i in seq_along(links)) {
       )
     ) |>
     html_text()
-  
+
   shots2 <- d |>
     html_element(xpath = '//*[@id="all-shots-b"]') |>
     html_text()
-  
-  
-  
+
+
+
   score <- d |>
     html_element(xpath = '//*[@id="result-a-b"]') |>
     html_text()
-  
+
   data_president <- data_president |>
     add_row(
       team1 = team1,
@@ -197,17 +197,17 @@ for (i in seq_along(links)) {
       shots2 = shots2,
       score = score
     )
-  
+
   if ((shots1 == 0) & (shots2 == 0)) {
     break
   }
 }
 
 d <- bind_rows(
-    data_preliminary,
-    data_main,
-    data_president
-  ) |>
+  data_preliminary,
+  data_main,
+  data_president
+) |>
   separate(
     score,
     into = c("goals1", "goals2"),
@@ -223,7 +223,7 @@ d <- bind_rows(
       goals2 == goals1 ~ 0,
       TRUE ~ 1
     )
-  ) |> 
+  ) |>
   filter(goals1 > 0, goals2 > 0)
 
 d |>
